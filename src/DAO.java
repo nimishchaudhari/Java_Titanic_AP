@@ -25,6 +25,7 @@ public class DAO {
         PClass = feature_parser.generate_array_of_feature(training_data,1,false);
         ArrayList<Integer> Sex = new ArrayList<Integer>();
         Sex = feature_parser.generate_array_of_feature(training_data,2,true);
+        System.out.println(Sex.size());
         ArrayList<Integer> Age = new ArrayList<Integer>();
         Age = feature_parser.generate_array_of_feature(training_data,3,false);
         ArrayList<Integer> SibSP = new ArrayList<Integer>();
@@ -33,22 +34,18 @@ public class DAO {
         ParCh = feature_parser.generate_array_of_feature(training_data,5,false);
         // The above code has got each column of the dataset as an ArrayList, now we do the Tree
 
-        System.out.println(survival_arraylist.size()+"\n"+Age.size()); // All the arraylists are of the same size,
         // now I can compare them with the survival arrayList and see the value being 0 or 1
-        HashMap Survival_based_on_sex = algo.distributor(survival_arraylist,Sex);
+        HashMap Survival_based_on_sex = algo.identify_feature_weightages(survival_arraylist,Sex);
+        System.out.println(Survival_based_on_sex);
+        algo.Getting_feature_data_with_max_value(Survival_based_on_sex);
 
-        System.out.println(Arrays.asList(Survival_based_on_sex));
+        HashMap<Integer,Integer> Survival_based_on_PClass = algo.identify_feature_weightages(survival_arraylist,PClass);
+        System.out.println(Survival_based_on_PClass);
 
 
-        /*
-        Survival_based_on_sex.entrySet().forEach(entry->{
-            System.out.println(entry.getKey() + " " + entry.getValue());
-        });
-        example.entrySet().forEach(entry->{
-    System.out.println(entry.getKey() + " " + entry.getValue());
-         });
+        // Now the final evaluator based on the score of the hashmaps
 
-         */
+        // and Then the predictor
     }
 
 

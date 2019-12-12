@@ -49,8 +49,17 @@ public class DTree {
         int index = Collections.max(hm.entrySet(), (entry1, entry2) -> entry1.getValue() - entry2.getValue()).getKey();
         int maxval = Collections.max(hm.entrySet(), (entry1, entry2) -> entry1.getValue() - entry2.getValue()).getValue();
         System.out.println(index + " " + maxval);
-
+        // This function basically returns the "feature" that has the maximum possibility of saving the person
         return index;
 
     }
+
+    public int training_model(int PClass, int Sex, int Age, int SibSP, int Parch){
+        int survival = 99;
+
+
+
+
+        return survival;
+    };
 }
